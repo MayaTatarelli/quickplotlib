@@ -48,7 +48,8 @@ def plotfxn(xdata=[],ydata=[],ylabel="ydata",xlabel="xdata",
             which_lines_dashed=[],
             nlegendcols=1,legend_on=True,legend_inside=True,
             remove_vertical_asymptotes_on_curve_number=[],
-            which_lines_only_markers=[]):
+            which_lines_only_markers=[],
+            integer_x_axis=False):
     print("---------------------------------------------")
     #-----------------------------------------------------
     # determine number of curves
@@ -136,6 +137,8 @@ def plotfxn(xdata=[],ydata=[],ylabel="ydata",xlabel="xdata",
         # plot command
         if(log_axes==None):
             plot_any_axes(plt.plot,x,y,lc,mk,ls)
+            if(integer_x_axis):
+                plt.xticks(range(xdata[0][0], xdata[0][-1]+1))
         elif(log_axes=="both"):
             plot_any_axes(plt.loglog,x,y,lc,mk,ls)
         elif(log_axes=="x"):
