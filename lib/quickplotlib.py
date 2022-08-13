@@ -15,9 +15,9 @@ import matplotlib # needed for the sparsity pattern code
 #-----------------------------------------------------
 from matplotlib.lines import Line2D
 from matplotlib import rc as matplotlibrc
-matplotlibrc('text.latex', preamble='\\usepackage{color}')
-matplotlibrc('text', usetex=True)
-matplotlibrc('font', family='serif')
+# matplotlibrc('text.latex', preamble='\\usepackage{color}')
+# matplotlibrc('text', usetex=True)
+# matplotlibrc('font', family='serif')
 clr = ['tab:blue','tab:red','tab:green','tab:orange','tab:purple','tab:brown','tab:pink','tab:gray','tab:olive','tab:cyan']
 mrkr = ['o','s','^','d','v','>','<']
 lnstl = ['solid','dashed','dashdot','dotted']
@@ -49,7 +49,8 @@ def plotfxn(xdata=[],ydata=[],ylabel="ydata",xlabel="xdata",
             nlegendcols=1,legend_on=True,legend_inside=True,
             remove_vertical_asymptotes_on_curve_number=[],
             which_lines_only_markers=[],
-            integer_x_axis=False):
+            integer_x_axis=False,
+            legend_location="best"):
     print("---------------------------------------------")
     #-----------------------------------------------------
     # determine number of curves
@@ -147,7 +148,7 @@ def plotfxn(xdata=[],ydata=[],ylabel="ydata",xlabel="xdata",
             plot_any_axes(plt.semilogy,x,y,lc,mk,ls)
     if(legend_on):
         if(legend_inside):
-            leg = plt.legend(handles=leg_elements, loc="best", ncol=nlegendcols, shadow=False, fancybox=True, fontsize=legend_fontSize, framealpha=1.0,edgecolor='inherit')
+            leg = plt.legend(handles=leg_elements, loc=legend_location, ncol=nlegendcols, shadow=False, fancybox=True, fontsize=legend_fontSize, framealpha=1.0,edgecolor='inherit')
         else:
             leg = plt.legend(handles=leg_elements, loc="upper center", bbox_to_anchor=(1.2, 1.0), ncol=nlegendcols, shadow=False, fancybox=True, fontsize=legend_fontSize, framealpha=1.0,edgecolor='inherit')
     plt.tight_layout()
